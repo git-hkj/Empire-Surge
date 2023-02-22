@@ -18,7 +18,7 @@ public class CoordinateLabeler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Application.isPlaying)     //to make sure the changes dont happen during game
+        if (!Application.isPlaying)     //to make sure the changes don't happen during game
         {
             DisplayCoordinate();
             UpdateObjectName();
