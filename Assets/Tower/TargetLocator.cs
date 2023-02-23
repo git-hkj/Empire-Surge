@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetLocator : MonoBehaviour
 {
-    [SerializeField] Transform weapon;
+    [Tooltip("Select the weapon to fire")][SerializeField] Transform weapon;
     Transform target;
 
     // Start is called before the first frame update

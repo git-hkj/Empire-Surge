@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
-    [SerializeField] bool isPlaceable;
+    [Tooltip("To define where defense can be placed")][SerializeField] bool isPlaceable;
     [SerializeField] private GameObject towerPrefab;
 
     //To perform action when mouse button are clicked
