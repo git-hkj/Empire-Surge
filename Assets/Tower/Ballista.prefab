@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 3144582324300694500}
+  towerRange: 15
+  projectiles: {fileID: 1900168293572284907}
 --- !u!1 &5137494373293870937
 GameObject:
   m_ObjectHideFlags: 0
