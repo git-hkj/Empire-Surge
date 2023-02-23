@@ -7,10 +7,11 @@ public class EnemyMover : MonoBehaviour
     [Tooltip("To define how path for enemy")][SerializeField] List<WayPoint> path = new List<WayPoint>();
     [Tooltip("To define how fast enemy moves")][SerializeField] [Range(0f,5f)]float enemySpeed = 1f;
     
-    // Start is called before the first frame update
-    void Start()
+    // Whenever object enabled/disabled
+    void OnEnable()
     {
         FindPath();
+        ReturnToStart();
         StartCoroutine(FollowPath());
     }
 
@@ -49,6 +50,6 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

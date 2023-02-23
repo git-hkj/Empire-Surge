@@ -7,17 +7,11 @@ public class EnemyHealth : MonoBehaviour
 {
     [Tooltip("Strenght of enemy unit")][SerializeField] int maxHitPoint = 5;
     private int currentHitPoints = 0;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    // Whenever object enabled/disabled
+    void OnEnable()
     {
         currentHitPoints = maxHitPoint;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //To process the collision
@@ -36,15 +30,11 @@ public class EnemyHealth : MonoBehaviour
     void ProcessHit(GameObject other)
     {
         currentHitPoints--;
-        Debug.Log($"I'm hit, health left {currentHitPoints}");
     }
 
     //To process destruction of the enemy and track scores
     void KillEnemy()
     {
-        //scoreboard.ScoreUpdate(scoreValue);
-        //GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
-        //fx.transform.parent = parentGameObject.transform;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
