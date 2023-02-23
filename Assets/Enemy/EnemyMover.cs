@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] List<WayPoint> path = new List<WayPoint>();
-    [Tooltip("To delay the movement")][SerializeField] float waitTime = 1f;
+    [Tooltip("To define how fast enemy moves")][SerializeField] [Range(0f,5f)]float enemySpeed = 1f;
     
     // Start is called before the first frame update
     void Start()
@@ -21,9 +21,11 @@ public class EnemyMover : MonoBehaviour
             Vector3 endPosition  = a.transform.position;
             float travelPercent  = 0f;
 
+            transform.LookAt(endPosition);      //to always look at the endposition
+
             while (travelPercent < 1f)
             {
-                travelPercent += Time.deltaTime;
+                travelPercent += Time.deltaTime * enemySpeed;
                 transform.position = Vector3.Lerp(startPositon, endPosition, travelPercent);
                 yield return new WaitForEndOfFrame();
             }
