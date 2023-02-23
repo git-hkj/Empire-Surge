@@ -6,15 +6,22 @@ using UnityEngine;
 [ExecuteAlways]
 public class CoordinateLabeler : MonoBehaviour
 {
+    [SerializeField] Color defaultColor = Color.white;
+    [SerializeField] Color blockedColor = Color.gray;
+    
     TextMeshPro label;
     Vector2Int coordinates =  new Vector2Int();
+    WayPoint wayP;
 
     //Unity is awakened
     void Awake()
     {
         label = GetComponent<TextMeshPro>();
+        label.enabled = false;
+        wayP = GetComponentInParent<WayPoint>(); 
         DisplayCoordinate();
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -23,8 +30,32 @@ public class CoordinateLabeler : MonoBehaviour
             DisplayCoordinate();
             UpdateObjectName();
         }
+        ColorCoordinate();
+        ToggleLabels();
     }
 
+    //to change color based on the status of the grid point
+    void ColorCoordinate()
+    {
+        if (wayP.IsPlaceable)
+        {
+            label.color = defaultColor;
+        }
+        else
+        {
+            label.color = blockedColor;
+        }
+    }
+    
+    //to turn the label on and off
+    void ToggleLabels()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            label.enabled = !label.IsActive();
+        }
+    }
+    
     //to display the coordinate of the tiles
     void DisplayCoordinate()
     {

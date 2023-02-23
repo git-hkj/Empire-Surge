@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
     void ProcessHit(GameObject other)
     {
         currentHitPoints--;
-        Debug.Log($"I'm hit by {other.gameObject.name}");
+        Debug.Log($"I'm hit, health left {currentHitPoints}");
     }
 
     //To process destruction of the enemy and track scores
