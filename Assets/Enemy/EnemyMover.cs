@@ -10,9 +10,28 @@ public class EnemyMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindPath();
         StartCoroutine(FollowPath());
-        }
+    }
 
+    //To be able to find a path using the tag
+    void FindPath()
+    {
+        path.Clear(); //to clear existing path 
+        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Path");
+        foreach (GameObject aVar in waypoints)
+        {
+            path.Add(aVar.GetComponent<WayPoint>());
+        }
+    }
+
+    //Move the enemy back into first waypoint
+    void ReturnToStart()
+    {
+        transform.position = path[0].transform.position;
+    }
+
+    //To define a path for enemy to follow
     IEnumerator FollowPath()
     {
         foreach (WayPoint a in path)
@@ -30,5 +49,6 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+        Destroy(gameObject);
     }
 }
