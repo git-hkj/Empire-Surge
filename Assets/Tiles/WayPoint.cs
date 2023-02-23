@@ -5,13 +5,15 @@ using UnityEngine;
 public class WayPoint : MonoBehaviour
 {
     [SerializeField] bool isPlaceable;
-    //To know when mouse button are clicked
+    [SerializeField] private GameObject towerPrefab;
+
+    //To perform action when mouse button are clicked
     void OnMouseDown()
     {
-        if (isPlaceable) 
-        { 
-            //if(Input.GetMouseButtonDown(0)) for OnMouseOver()
-            Debug.Log(transform.name);
+        if (isPlaceable)
+        {
+            Instantiate(towerPrefab, transform.position, Quaternion.identity);
+            isPlaceable = false; //to make sure one tower per grid point
         }
     }
 }
