@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WayPoint : MonoBehaviour
 {
-    [SerializeField] private GameObject towerPrefab;
+    [SerializeField] Tower towerPrefab;
     [Tooltip("To define where defense can be placed")][SerializeField] bool isPlaceable;
     //defining a property to make the bool more accessable 
     public bool IsPlaceable { get { return isPlaceable; } }
@@ -14,8 +14,8 @@ public class WayPoint : MonoBehaviour
     {
         if (isPlaceable)
         {
-            Instantiate(towerPrefab, transform.position, Quaternion.identity);
-            isPlaceable = false; //to make sure one tower per grid point
+            bool canAfford = towerPrefab.CreateTower(towerPrefab, transform.position);
+            isPlaceable = !canAfford; 
         }
     }
 }

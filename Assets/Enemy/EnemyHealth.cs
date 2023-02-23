@@ -8,17 +8,23 @@ public class EnemyHealth : MonoBehaviour
     [Tooltip("Strenght of enemy unit")][SerializeField] int maxHitPoint = 5;
     private int currentHitPoints = 0;
 
+    Enemy enemy;
+
     // Whenever object enabled/disabled
     void OnEnable()
     {
         currentHitPoints = maxHitPoint;
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        enemy = GetComponent<Enemy>();
+    }
+
     //To process the collision
     void OnParticleCollision(GameObject other)      //make sure to enable 'Send collision message'
     {
-        //GameObject vFx = Instantiate(hitVFX, transform.position, Quaternion.identity);
-        //vFx.transform.parent = parentGameObject.transform;
         ProcessHit(other);
         if (currentHitPoints < 1)
         {
@@ -36,5 +42,6 @@ public class EnemyHealth : MonoBehaviour
     void KillEnemy()
     {
         gameObject.SetActive(false);
+        enemy.RewardGold();
     }
 }

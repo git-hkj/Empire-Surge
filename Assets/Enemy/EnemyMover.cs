@@ -6,13 +6,21 @@ public class EnemyMover : MonoBehaviour
 {
     [Tooltip("To define how path for enemy")][SerializeField] List<WayPoint> path = new List<WayPoint>();
     [Tooltip("To define how fast enemy moves")][SerializeField] [Range(0f,5f)]float enemySpeed = 1f;
-    
+
+    Enemy enemy;
+
     // Whenever object enabled/disabled
     void OnEnable()
     {
         FindPath();
         ReturnToStart();
         StartCoroutine(FollowPath());
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        enemy = GetComponent<Enemy>();
     }
 
     //To be able to find a path using the tag
@@ -50,6 +58,8 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+        enemy.PayFine();
         gameObject.SetActive(false);
+        
     }
 }
