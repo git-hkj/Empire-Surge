@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    [Tooltip("Cost of building a tower")][SerializeField] int towerExpense = 60;
+    [Tooltip("Cost of building a tower")][SerializeField] int towerExpense = 80;
     
     //To build the tower for player
     public bool CreateTower(Tower tower, Vector3 position)
