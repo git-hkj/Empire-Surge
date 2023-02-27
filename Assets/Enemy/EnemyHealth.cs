@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyHealth : MonoBehaviour
 {
-    [Tooltip("Strenght of enemy unit")][SerializeField] int maxHitPoint = 5;
+    [Tooltip("Strength of enemy unit")][SerializeField] int maxHitPoint = 5;
+    [Tooltip("Difficulty increase with respawn")][SerializeField] int difficultyRamp = 1;
     private int currentHitPoints = 0;
 
     Enemy enemy;
@@ -42,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
     void KillEnemy()
     {
         gameObject.SetActive(false);
+        maxHitPoint += difficultyRamp;
         enemy.RewardGold();
     }
 }
