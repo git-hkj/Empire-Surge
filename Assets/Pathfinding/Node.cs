@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Node
 {
     public Vector2Int coordinates;
@@ -14,7 +15,7 @@ public class Node
     public Node(Vector2Int coordinates, bool isWalk)
     {
         this.coordinates = coordinates;
-        this.isWalkable = isWalk;
+        this.isWalkable  = isWalk;
     }
 
 
