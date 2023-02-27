@@ -8,8 +8,8 @@ using UnityEngine;
 public class ObejctPull : MonoBehaviour
 {
     [Tooltip("To define enemy type")][SerializeField] GameObject enemyPrefab;
-    [Tooltip("size of the pool for the waves")][SerializeField] int poolSize=4;
-    [Tooltip("Time it takes for new enemy")][SerializeField] float spawnTimer = 1f;
+    [Tooltip("Size of the pool for each waves")][SerializeField][Range(1f, 20f)] int poolSize=4;
+    [Tooltip("Time for Enemy respawn")][SerializeField] [Range(0.1f,30f)] float spawnTimer = 1f;
 
     GameObject[] pool;
 

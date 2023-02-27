@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
     [Tooltip("To define how path for enemy")][SerializeField] List<WayPoint> path = new List<WayPoint>();
@@ -27,10 +29,16 @@ public class EnemyMover : MonoBehaviour
     void FindPath()
     {
         path.Clear(); //to clear existing path 
-        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Path");
-        foreach (GameObject aVar in waypoints)
+        GameObject parent = GameObject.FindGameObjectWithTag("Path");
+        foreach (Transform aVar in parent.transform)
         {
-            path.Add(aVar.GetComponent<WayPoint>());
+            WayPoint waypoint = aVar.GetComponent<WayPoint>();
+
+            if (waypoint != null)
+            {
+                path.Add(waypoint);
+            }
+            
         }
     }
 
@@ -58,8 +66,14 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+
+        FinishPath();
+    }
+
+    //To define the end of path and make player pay fine
+    private void FinishPath()
+    {
         enemy.PayFine();
         gameObject.SetActive(false);
-        
     }
 }

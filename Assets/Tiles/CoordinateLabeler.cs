@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 
 [ExecuteAlways]
+[RequireComponent(typeof(TextMeshPro))]
+
 public class CoordinateLabeler : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
@@ -29,13 +31,14 @@ public class CoordinateLabeler : MonoBehaviour
         {
             DisplayCoordinate();
             UpdateObjectName();
+            label.enabled = true;
         }
-        ColorCoordinate();
+        SetLabelColor();
         ToggleLabels();
     }
 
     //to change color based on the status of the grid point
-    void ColorCoordinate()
+    void SetLabelColor()
     {
         if (wayP.IsPlaceable)
         {
