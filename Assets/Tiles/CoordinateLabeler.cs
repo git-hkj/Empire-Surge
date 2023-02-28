@@ -12,7 +12,7 @@ public class CoordinateLabeler : MonoBehaviour
     [SerializeField] Color blockedColor = Color.gray;
 
     [SerializeField] Color exploredColor = Color.yellow;
-    [SerializeField] Color pathColor     = new Color(1f,0f,0.5f); //to create orange using RGB scales
+    [SerializeField] Color pathColor     = new Color(0.5f,0f,0.5f); //to create orange using RGB scales
 
     TextMeshPro label;
     Vector2Int coordinates =  new Vector2Int();
