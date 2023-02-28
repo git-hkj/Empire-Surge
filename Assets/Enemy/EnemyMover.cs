@@ -6,8 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
-    [Tooltip("To define how path for enemy")][SerializeField] List<WayPoint> path = new List<WayPoint>();
-    [Tooltip("To define how fast enemy moves")][SerializeField] [Range(0f,5f)]float enemySpeed = 1f;
+    [Tooltip("To define how path for enemy")][SerializeField] List<Tile> path = new List<Tile>();
+    [Tooltip("To define how fast enemy moves")][SerializeField][Range(0f, 5f)] float enemySpeed = 1f;
 
     Enemy enemy;
 
@@ -32,17 +32,17 @@ public class EnemyMover : MonoBehaviour
         GameObject parent = GameObject.FindGameObjectWithTag("Path");
         foreach (Transform aVar in parent.transform)
         {
-            WayPoint waypoint = aVar.GetComponent<WayPoint>();
+            Tile Tile = aVar.GetComponent<Tile>();
 
-            if (waypoint != null)
+            if (Tile != null)
             {
-                path.Add(waypoint);
+                path.Add(Tile);
             }
-            
+
         }
     }
 
-    //Move the enemy back into first waypoint
+    //Move the enemy back into first Tile
     void ReturnToStart()
     {
         transform.position = path[0].transform.position;
@@ -51,11 +51,11 @@ public class EnemyMover : MonoBehaviour
     //To define a path for enemy to follow
     IEnumerator FollowPath()
     {
-        foreach (WayPoint a in path)
+        foreach (Tile a in path)
         {
             Vector3 startPositon = transform.position;
-            Vector3 endPosition  = a.transform.position;
-            float travelPercent  = 0f;
+            Vector3 endPosition = a.transform.position;
+            float travelPercent = 0f;
 
             transform.LookAt(endPosition);      //to always look at the endposition
 
