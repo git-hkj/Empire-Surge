@@ -16896,6 +16896,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6410125734471761313, guid: cb56b74ca34753d4b8c773af8d82eba6, type: 3}
   m_PrefabInstance: {fileID: 428913145}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &429990851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8861079014548067308, guid: 000604cb3865fba45b5cfafcb7fa6eff, type: 3}
+  m_PrefabInstance: {fileID: 8861079014556767277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &429990854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429990851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5659d7008c89ec745afd5b596f632da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startCoordinates: {x: 4, y: 3}
+  destinationCoordiantes: {x: 1, y: 5}
 --- !u!1001 &430003741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25503,7 +25522,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: {x: 10, y: 10}
-  unityGridSize: 10
 --- !u!4 &637215679
 Transform:
   m_ObjectHideFlags: 0
@@ -81565,6 +81583,14 @@ PrefabInstance:
     - target: {fileID: 8861079014548067310, guid: 000604cb3865fba45b5cfafcb7fa6eff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8861079014548067311, guid: 000604cb3865fba45b5cfafcb7fa6eff, type: 3}
+      propertyPath: poolSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8861079014548067311, guid: 000604cb3865fba45b5cfafcb7fa6eff, type: 3}
+      propertyPath: spawnTimer
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 000604cb3865fba45b5cfafcb7fa6eff, type: 3}

@@ -1,18 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [Tooltip("Define the grid size")]
-    [SerializeField] Vector2Int gridSize;
-    [Tooltip("Size of the continent: Should match Unity Editor snap settings")]
-    [SerializeField] int unityGridSize = 10;
+    [Tooltip("Define the grid size")][SerializeField] Vector2Int gridSize;
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
-    
-    //Property definition 
-    public int UnityGridSize { get { return UnityGridSize; } }
     
     //Property for accessing
     public Dictionary<Vector2Int,Node> Grid { get { return grid; } }
@@ -32,37 +25,7 @@ public class GridManager : MonoBehaviour
         }
         return null;
     }
-
-    //To check where enemy can walk
-    public void BlockedNode(Vector2Int coordinates)
-    {
-        if (grid.ContainsKey(coordinates))
-        {
-            grid[coordinates].isWalkable = false;
-        }
-        
-    }
-
-    //To get the coodinates of the position
-    public Vector2Int GetCoordinatesFromPosition(Vector3 position)
-    {
-        Vector2Int coordinates = new Vector2Int();
-        coordinates.x = Mathf.RoundToInt(position.x / unityGridSize);
-        coordinates.y = Mathf.RoundToInt(position.z / unityGridSize);
-        
-        return coordinates;
-    }
-
-    //To get the position from the coordinates
-    public Vector3 GetPositionFromCoordinates(Vector2Int coordinates)
-    {
-        Vector3 position = new Vector3();
-        position.x = coordinates.x * unityGridSize;
-        position.z = coordinates.y * unityGridSize;
-
-        return position;
-    }
-
+    
     //to create the grid for movement
     private void CreateGrid()
     {
